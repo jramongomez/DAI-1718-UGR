@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 2 DAI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='iconos/realmadrid.ico') }}">
+  </head>
+  <body>
+    <div class="Ejemplo1" align="center">
+      <h1>Página de login</h1>
+      {% if usuario == 'isco' %}
+      <br>
+      <br>
+      <h2>Bienvenido {{ usuario }}!</h2> 
+      <br>
+      <img align=center style ="width: 500px; height: 350px; " src="{{ url_for('static', filename='images/isco.png') }}" > 
+      {% elif usuario == 'asensio' %}
+      <br>
+      <br>
+      <h2>Bienvenido {{ usuario }}!</h2> 
+      <br>
+      <img align=center style ="width: 500px; height: 350px; " src="{{ url_for('static', filename='images/asensio.png') }}" > 
+      {% elif usuario %}
+      <br>
+      <br>
+      <h2>Bienvenido {{ usuario }}!</h2>
+      <br>
+      <img align=center style ="width: 300px; height: 350px; " src="{{ url_for('static', filename='images/user.png') }}" >
+      {% else %}
+      <img align=center style ="width: 300px; height: 350px; " src="{{ url_for('static', filename='images/user.png') }}" >
+
+      <h2>Introduzca su nombre de usuario:
+       <form id = form1 action = "" method="post">
+        <dl >       
+          <input type=text name=username> 
+          <input type=submit value=Login usuario=name>
+        </dl>
+      </form>
+
+      <!--<input type="text" name="nombre" /><br />-->
+      
+      <!---<button type="button" onclick="<link href="user"> ">
+      
+      Enviar</button>-->
+
+      
+      {% endif %}    
+
+    </div>
+  </body>
+</html>

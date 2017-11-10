@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 2 DAI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    <div class="Ejercicio 4 DAI" align="center">
+      <h1>Generador de imagen fractal</h1>
+      <h3> Introduza las coordenadas x1, y1, x2, y2 y la anchura en pixeles </h3>
+      <br>
+  <form action="/generaFractal" method="GET">
+      <div>
+          <label for="x1">Coordenada x1:</label>
+          <input type="number" name="x1" value = "-1"/>
+      </div>
+      <div>
+          <label for="x2">Coordenada x2:</label>
+          <input type="number" name="x2" value = "1"/>
+      </div>
+      <div>
+          <label for="y1">Coordenada y1:</label>
+          <input type="number" name="y1" value = "-1"/>
+      </div>
+      <div>
+          <label for="y2">Coordenada y2:</label>
+          <input type="number" name="y2" value = "1"/>
+      </div>
+      <div>
+          <label for="anchura">Anchura(px):</label>
+          <input type="number" name="anchura" value = "300"/>
+      </div> 
+      <div>
+          <label for="iteraciones">Iteraciones:</label>
+          <input type="number" name="iteraciones" value = "100"/>
+      </div> 
+      <input type="button" value="Generar mandelbrot introduciendo paleta de colores" onClick="document.getElementById('oculto').style.visibility='visible'"> 
+      
+      <div id="oculto" style="visibility:hidden" > 
+        <dl >  
+          <h3> Ahora introduzca los colores de la paleta que desea usar:</h3>
+        </dl >  
+        <div>
+            <label for="Color1">Color 1:</label>
+            <input type="color" name="color1" value="None">
+        </div> 
+        <div>
+            <label for="Color2">Color 2:</label>
+            <input type="color" name="color2" value="None">
+        </div> 
+        <div>
+            <label for="Color3">Color3:</label>
+            <input type="color" name="color3" value="None">
+        </div> 
+      </div>
+      <div class="button">
+          <br>
+          <button type="submit">Generar imagen fractal</button>
+      </div>
+  </form>     
+
+  
+ 
+  
+ 
+
+
+    </div>
+  </body>
+</html>

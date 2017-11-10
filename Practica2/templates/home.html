@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejercicio 3 DAI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='iconos/realmadrid.ico') }}">
+  </head>
+  <body>
+    <div class="Ejemplo1" align="left">
+      <h1>Desarrollo de Aplicaciones Para Internet</h1>
+      <br>
+      <br>
+      <h3> Página de Inicio</h3>
+      <p> Bienvenido a la página de inicio del ejercicio 3 de la práctica 2, a continuación podrás iniciar sesión para acceder al sistema. </p> 
+      <p> Haz click <a href="user">aquí</a> para ir a la página de inicio de sesión</p> 
+    </div>
+    <div class="Imagen" align="center">
+      <img align=center style ="width: 500px; height: 350px; " src="{{ url_for('static', filename='images/realmadrid.png') }}" > 
+    </div> 
+  </body>
+</html>
