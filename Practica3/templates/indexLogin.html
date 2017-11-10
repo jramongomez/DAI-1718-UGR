@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+
+{% block Content %}
+<div class="tab" >
+  <button class="tablinks" onclick="openCity(event, 'Home')" id="defaultOpen">Home</button>
+  <button class="tablinks" onclick="openCity(event, 'Profile')">Profile</button>
+  <button class="tablinks" onclick="openCity(event, 'Modify')">Modify</button>
+  <button class="tablinks" onclick="openCity(event, 'Contact')">Contact</button>
+  <button class="tablinks" onclick="openCity(event, 'About')">About</button>
+  <div class="w3-dropdown-hover" style="width: 100%;">
+      <button class="tablinks">Historial <i class="fa fa-caret-down" ></i>  </button>
+      <div class="w3-dropdown-content w3-bar-block" style="width: 100%;">
+        <button class="w3-bar-item tablinks" onclick="location.href= '{{historial["page1"]}}';" > {{historial["page1"]}}   </button>
+        <button class="w3-bar-item tablinks" onclick="location.href= '{{historial["page2"]}}';" >{{ historial["page2"] }}</button>
+        <button class="w3-bar-item tablinks" onclick="location.href= '{{historial["page3"]}}';" >{{ historial["page3"] }}</button>
+      </div>
+  </div> 
+</div>
+
+<div id="Home" class="tabcontent" >
+  <h3>Home</h3>
+    <p> Bienvenidos a la página web de la práctica 3. </p> 
+    <p> En esta página podremos registrarnos usando el campo login, iniciar sesión y navegar por las diferentes páginas del menú de la izquierda.</p>
+    <p> También almacenará mediante el mecanismo de sesiones las 3 últimas páginas visitadas y nos dejará volver a acceder a ellas directamente a través de los enlaces del menú de la izquierda.
+  </div>
+
+<div id="Contact" class="tabcontent" >
+  <h3>Contact</h3>
+  <p>Preguntas, dudas y sugerencias al correo: jrgb13@gmail.com.</p>
+</div>
+<div id="About" class="tabcontent" >
+  <h3>About</h3>
+  <p>Página desarrollada por Juan Ramón Gómez Berzosa para la práctica 3 de la asignatura Desarrollo de aplicaciones para internet.</p>
+</div>
+<div id="Profile" class="tabcontent">
+    <h3> Datos del usuario </h3>
+    <p>Nombre de usuario: {{ profile["Nombre de usuario"] }}</p>
+    <p>Nombre: {{ profile["Nombre"] }}</p>
+    <p>Apellidos: {{ profile["Apellidos"] }}</p>
+    <p>DNI: {{ profile["DNI"] }}</p>
+    <p>Correo: {{ profile["Correo"] }} </p>
+    <p>Telefono: {{ profile["Telefono"] }}</p>
+    <p>Contraseña: {{ profile["Contrasenia"] }}</p>
+
+</div>
+<div class="tabcontent" id = "Modify">
+    <h3>Modificar datos del usuario</h3>
+    <form action="/saveProfile" method="post" >
+        Nombre de Usuario: {{ profile[ "Nombre de usuario" ] }} <br>
+        Nombre: <input type="text" name="nombre" value = {{ profile[ "Nombre" ] }} > <br>
+        Apellidos: <input type="text" name="apellidos" value = {{ profile[ "Apellidos" ] }}> <br>
+        DNI: <input type="text" name="dni" value = {{ profile[ "DNI" ] }}> <br>
+        Correo: <input type="email" name="correo" value = {{ profile[ "Correo" ] }}> <br>
+        Telefono: <input type="tel" name="telefono"value = {{ profile[ "Telefono" ] }}> <br>
+        Contraseña: <input type="password" name="pass"value = {{ profile[ "Contrasenia" ] }} > <br><br>
+        <input type="submit" value="Modificar" name = "Modificar" >
+  </form>
+
+</div>
+
+{% endblock %}

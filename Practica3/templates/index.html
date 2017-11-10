@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='iconos/iconohtml.png') }}">
+
+  </head>
+</head>
+<body>
+
+
+<header >
+
+<div style ="height: 30%" >
+
+  <div class="logo" >
+    <img style ="width: 250px; height: 200px; float: left" src="{{ url_for('static', filename='images/HTML5.png') }}" > 
+ </div>
+
+ <div class="titulo" >
+    <h1> Desarrollo de Aplicaciones para internet</h1>
+  </div>
+
+  <div class="subtitulo" >
+    <h2> Página web de desarrollo de prácticas</h2>
+  </div>
+
+  <div class= "login" align= "right" >
+    <fieldset >
+    <legend>User</legend>
+    {% if usuario %}
+
+     <p>Bienvenido {{ usuario }}!</p> 
+      <form action="/logout" method="post" style="display: inline-block;">
+        <input type="submit" value="Log out" name = "Logout" >
+      </form>
+     
+    {% else %}
+      <form action="/login" method="post">
+        Username: <input type="text" name="username" > <br>
+        Password: <input type="password" name="pass" > <br><br>
+        <input type="submit" value="Log in" name = "Login" style="margin-right: 90px">
+      </form>
+    {% endif %}
+    </fieldset>
+  </div> 
+</>
+
+</header>
+
+<div style ="height: 50%">
+
+  {% block Content %}
+  <div class="tab" >
+    <button class="tablinks" onclick="openCity(event, 'Home')" id="defaultOpen">Home</button>
+    <button class="tablinks" onclick="openCity(event, 'Register')">Register</button>
+    <button class="tablinks" onclick="openCity(event, 'Contact')">Contact</button>
+    <button class="tablinks" onclick="openCity(event, 'About')">About</button>
+    <div class="w3-dropdown-hover" style="width: 100%;">
+      <button class="tablinks">Historial <i class="fa fa-caret-down" ></i>  </button>
+      <div class="w3-dropdown-content w3-bar-block" style="width: 100%;">
+        <button class="w3-bar-item tablinks" onclick="location.href= '{{historial["page1"]}}';" > {{historial["page1"]}}   </button>
+        <button class="w3-bar-item tablinks" onclick="location.href= '{{historial["page2"]}}';" >{{ historial["page2"] }}</button>
+        <button class="w3-bar-item tablinks" onclick="location.href= '{{historial["page3"]}}';" >{{ historial["page3"] }}</button>
+      </div>
+    </div> 
+  </div>
+
+  <div id="Home" class="tabcontent" >
+    <h3>Home</h3>
+      <p> Bienvenidos a la página web de la práctica 3. </p> 
+      <p> En esta página podremos registrarnos usando el campo login, iniciar sesión y navegar por las diferentes páginas del menú de la izquierda.</p>
+      <p> También almacenará mediante el mecanismo de sesiones las 3 últimas páginas visitadas y nos dejará volver a acceder a ellas directamente a través de los enlaces del menú de la izquierda.
+    </div>
+
+  <div id="Register" class="tabcontent" >
+    <h3>Register</h3>
+    <p>Formulario de registro para registrarse en el sistema.</p> 
+    <form action="/register" method="post" >
+          Nombre: <input type="text" name="nombre" > <br>
+          Apellidos: <input type="text" name="apellidos" > <br>
+          DNI: <input type="text" name="dni" > <br>
+          Correo: <input type="email" name="correo" > <br>
+          Telefono: <input type="tel" name="telefono" > <br>
+          Nombre de Usuario: <input type="text" name="username" > <br>
+          Contraseña: <input type="password" name="pass" > <br><br>
+          <input type="submit" value="Registrarse" name = "Registrarse" >
+    </form>
+  </div>
+  <div id="Contact" class="tabcontent" >
+    <h3>Contact</h3>
+    <p>Preguntas, dudas y sugerencias al correo: jrgb13@gmail.com.</p>
+  </div>
+  <div id="About" class="tabcontent" >
+    <h3>About</h3>
+    <p>Página desarrollada por Juan Ramón Gómez Berzosa para la práctica 3 de la asignatura Desarrollo de aplicaciones para internet.</p>
+  </div>
+
+  {% endblock %}
+
+</div>
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+function enviar(pagina){
+  document.nombreDelFormulario.action = pagina;
+  document.nombreDelFormulario.submit();
+
+}
+</script>
+
+<footer>
+
+  <div class="Footer" style ="padding: 2px;">
+      <p> © copyright Juan Ramón Gómez Berzosa </p>
+  </div>
+</footer>
+    
+</body>
+
+
+</html> 
