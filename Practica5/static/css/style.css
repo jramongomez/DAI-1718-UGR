@@ -1,0 +1,47 @@
+  /* label color */
+  .input-field label {
+   color: #fff;
+ }
+ 
+ .sidebaractive{
+  color: ;
+}
+.iconos{
+  color:#000;
+}
+
+.tabs{
+/*height: auto;
+*/
+display: block;
+height: 590px;
+white-space: normal;
+}
+.tab{
+display: block;
+width: 100%;
+
+}
+.tab-content{
+  height: 590px;
+  width: 100%;
+
+}
+.indicator{
+  display: none;
+}
+
+div.tab li:hover{
+  background-color: #111;
+
+}
+ul .person{
+  background-color: #1CBCC1;
+}
+
+
+body {
+  font-family: Verdana, sans-serif;
+  color:#ffffff;
+  background-color: #202020;
+}

@@ -1,0 +1,139 @@
+{% extends "index.html" %}
+
+
+	{% block Content %}
+
+	<div class="row">
+		<div class="card-panel grey darken-3 col s4 m2 l2">
+			<ul class="tabs tabs-transparent">
+				<li class="tab" style="height: 10%;"><a class ="active" href="#home"><p style="font-size: 18px;">Home</p></a></li>
+				<li class="tab" style="height: 10%;"><a href="#search"><p style="font-size: 18px;">Search</p></a></li>
+				<li class="tab" style="height: 10%;"><a href="#profile"><p style="font-size: 18px;">Profile</p></a></li>
+				<li class="tab" style="height: 10%;"><a href="#modify"><p style="font-size: 18px;">Modify</p></a></li>
+				<li class="tab" style="height: 10%;"><a href="#contact"><p style="font-size: 18px;">Contact</p></a></li>
+				<li class="tab" style="height: 10%;"><a href="#about"><p style="font-size: 18px;">About</p></a></li>
+			</ul>
+		</div>
+		<div class="card-panel grey darken-1 col s8 m10 l10">
+			<div id="home" class="col tab-content">
+				<h3>Home</h3>      
+				<p> Bienvenidos a la página web de la práctica 3. </p> 
+				<p> En esta página podremos registrarnos usando el campo login, iniciar sesión y navegar por las diferentes páginas del menú de la izquierda.</p>
+				<p> También se podrán hacer búsquedas en la base de datos de restaurantes, eligiendo la categoría por la que queremos buscar e introduciendo un valor. </p>
+
+			</div>
+			<div id="search" class="col tab-content">
+				<h3>Search </h3>  
+				<form action="/search" method="post">
+					<div class="row">
+
+						<div class="col s12 m4 l4">
+							<h6> Buscar por: </h6>
+							<p>
+								<input  class="with-gap" name="tipoBusqueda" type="radio" id="cuisine" value="cuisine" />
+								<label  class= "white-text" for="cuisine">Cocina</label>
+							</p>
+							<p>
+								<input class="with-gap" name="tipoBusqueda" type="radio" id="borough" value="borough" />
+								<label class= "white-text" for="borough">Barrio</label>
+							</p>
+							<p>
+								<input class="with-gap" name="tipoBusqueda" type="radio" id="zipcode" value="zipcode"  />
+								<label class= "white-text" for="zipcode">Distrito postal</label>
+							</p>
+							<p>
+								<input class="with-gap" name="tipoBusqueda" type="radio" id="street" value="street" />
+								<label class= "white-text" for="street">Calle</label>
+							</p>
+						</div>
+
+						<div class="col s12 m3 l3">
+
+							<div class="row">
+
+								<h6> Palabra clave: </h6>
+
+								<input id="keyword" name = "keyword" type="text" class="validate white-text">
+								<label for="keyword"></label>
+
+								<div class="input-field">
+									<button class="btn waves-effect waves-light light-blue accent-4 " type="submit" >Save
+										<i class="material-icons right">send</i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form> 
+			</div>
+			<div id="contact" class="col tab-content">
+				<h3>Contact</h3>
+				<p>Preguntas, dudas y sugerencias al correo: jrgb13@gmail.com.</p>
+			</div>
+			<div id="profile" class="col tab-content">
+				<h3>Datos de Usuario</h3>
+				<div class="row">
+					<img class="col s8 m4 l3" width="450" src="{{ url_for('static', filename='images/user.png') }}">
+					<div class= "col s12 m7 l5">
+						</br>
+
+						<p>Nombre de usuario: {{ profile["Nombre de usuario"] }}</p>
+						<p>Nombre: {{ profile["Nombre"] }}</p>
+						<p>Apellidos: {{ profile["Apellidos"] }}</p>
+						<p>Correo: {{ profile["Correo"] }} </p>
+						<p>Telefono: {{ profile["Telefono"] }}</p>
+						<p>Contraseña: {{ profile["Contrasenia"] }}</p>
+					</div>
+				</div>
+			</div>
+
+			<div id="modify" class="col tab-content">
+				<h3>Modificar datos del usuario</h3>
+				<form action="/saveProfile" method="post">
+					<div class="row">
+						<div class="input-field col s6">
+							<input id="first_name" name = "first_name" type="text" class="validate white-text">
+							<label for="first_name">First Name</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="last_name" name = "last_name" type="text" class="validate white-text">
+							<label for="last_name">Last Name</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<input id="disabled" disabled value= {{ usuario }} type="text" class="validate white-text" id=>
+							<label for="username">Username</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="password" name = "password" type="password" class="validate white-text">
+							<label for="password">Password</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<input id="email" name = "email" type="email" class="validate white-text">
+							<label for="email" data-error="wrong" data-success="right">Email</label>
+						</div>
+						<div class="input-field col s6">
+							<input id="telephone" name = "telephone" type="tel" class="validate white-text">
+							<label for="telephone">Telephone</label>
+						</div>
+					</div>
+					<div class="input-field inline">
+						<button class="btn waves-effect waves-light light-blue accent-4 " type="submit" >Save
+							<i class="material-icons right">send</i>
+						</button>
+					</div>
+
+
+				</form>
+			</div>
+			<div id="about" class="col tab-content">
+				<h3>About</h3>
+				<p>Página desarrollada por Juan Ramón Gómez Berzosa para la práctica 3 de la asignatura Desarrollo de aplicaciones para internet usando el framework CSS de Materialize.</p>
+			</div>
+		</div>
+	</div>
+
+	{% endblock %}
