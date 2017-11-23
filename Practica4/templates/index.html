@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" href="{{ url_for('static', filename='css/materialize.min.css') }}" rel="stylesheet" media="screen,projection">
+  <link type="text/css" href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" media="screen,projection">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='iconos/iconohtml.png') }}">
+
+</head>
+
+<body>
+
+
+  <!-- Navbar goes here -->
+	  <nav>
+	    <div class="nav-wrapper grey darken-3" >
+	      <a href="\" class="brand-logo"> <i class="material-icons" style="margin-left: 10px;">cloud</i>DAI</a> 
+	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+	      <ul class="right hide-on-med-and-down ">
+	        {% block nav %}
+	        <li><a href="/login">Login</a></li>
+	        <li><a href="/register">Register</a></li>
+	        {% endblock %}
+	        
+	      </ul>
+	      
+	      <ul class="side-nav grey darken-3" id="mobile-demo">
+	        <li><p class= "white-text"> &nbsp;&nbsp;&nbsp;Menú</p></li>
+	          {% block nav2 %}
+	          <li><a class= "white-text" href="/login">Login</a></li>
+	          <li><a  class= "white-text" href="/register">Register</a></li>
+	          {% endblock %}
+	        </ul>
+	      </div>
+
+	    </nav>
+
+
+    {% block Content %}
+    <div class="row">
+      <div class="card-panel grey darken-3 col s4 m2 l2">
+        <ul class="tabs tabs-transparent">
+          <li class="tab" style="height: 10%;"><a class ="active" href="#home"><p style="font-size: 18px;">Home</p></a></li>
+          <li class="tab" style="height: 10%;"><a href="#search"><p style="font-size: 18px;">Search</p></a></li>
+          <li class="tab" style="height: 10%;"><a href="#contact"><p style="font-size: 18px;">Contact</p></a></li>
+          <li class="tab" style="height: 10%;"><a href="#about"><p style="font-size: 18px;">About</p></a></li>
+        </ul>
+      </div>
+      <div class="card-panel grey darken-1 col s8 m10 l10">
+        <div id="home" class="col tab-content">
+          <h3>Home</h3>      
+          <p> Bienvenidos a la página web de la práctica 3. </p> 
+          <p> En esta página podremos registrarnos usando el campo login, iniciar sesión y navegar por las diferentes páginas del menú de la izquierda.</p>
+          <p> También se podrán hacer búsquedas en la base de datos de restaurantes, eligiendo la categoría por la que queremos buscar e introduciendo un valor. </p>
+        </div>
+        <div id="search" class="col tab-content">
+          <h3>Search </h3>  
+          <form action="/search" method="post">
+            <div class="row">
+
+              <div class="col s12 m4 l4">
+                <h6> Buscar por: </h6>
+                <p>
+                  <input  class="with-gap" name="tipoBusqueda" type="radio" id="cuisine" value="cuisine" />
+                  <label  class= "white-text" for="cuisine">Cocina</label>
+                </p>
+                <p>
+                  <input class="with-gap" name="tipoBusqueda" type="radio" id="borough" value="borough" />
+                  <label class= "white-text" for="borough">Barrio</label>
+                </p>
+                <p>
+                  <input class="with-gap" name="tipoBusqueda" type="radio" id="zipcode" value="zipcode"  />
+                  <label class= "white-text" for="zipcode">Distrito postal</label>
+                </p>
+                <p>
+                  <input class="with-gap" name="tipoBusqueda" type="radio" id="street" value="street" />
+                  <label class= "white-text" for="street">Calle</label>
+                </p>
+              </div>
+
+              <div class="col s12 m3 l3">
+
+                <div class="row">
+
+                  <h6> Palabra clave: </h6>
+
+                    <input id="keyword" name = "keyword" type="text" class="validate white-text">
+                    <label for="keyword"></label>
+
+                  <div class="input-field">
+                    <button class="btn waves-effect waves-light light-blue accent-4 " type="submit" >Save
+                      <i class="material-icons right">send</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form> 
+        </div>
+        <div id="contact" class="col tab-content">
+          <h3>Contact</h3>
+          <p>Preguntas, dudas y sugerencias al correo: jrgb13@gmail.com.</p>
+        </div>
+        <div id="about" class="col tab-content">
+          <h3>About</h3>
+          <p>Página desarrollada por Juan Ramón Gómez Berzosa para la práctica 3 de la asignatura Desarrollo de aplicaciones para internet usando el framework CSS de Materialize.</p>
+        </div>
+      </div>
+    </div>
+
+
+    {% endblock %}
+
+    {% block footer %}
+
+    <footer class="page-footer grey darken-3" style="margin-top: -25px; ">
+
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Desarrollo de Aplicaciones para Internet</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col l6 s12">
+          <h6 align="left"> © 2017 Copyright Juan Ramón Gómez Berzosa </h6>
+        </div>
+        <div class="col l6 s12">
+          <h6 style="float:right;" > <a class="grey-text text-lighten-4" href="https://github.com/jramongomez"> <img align= "top" style="width: 20px; height: 20px;" src="{{ url_for('static', filename='images/github.png') }}" > GitHub </a> </h6>
+          <h6  style="float:right; margin-right: 10px;"> <a class="grey-text text-lighten-4" href="https://www.facebook.com/juanramon.gomezberzosa"> <img align= "top" style="width: 20px; height: 20px;" src="{{ url_for('static', filename='images/facebook.png') }}" > Facebook </a> </h6>
+
+        </div>
+      </div>
+    </footer>
+
+    {% endblock %}
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+    <script>
+      $(document).ready(function(){
+        $(".button-collapse").sideNav();
+      })
+    </script>
+
+  </body>
+
+  </html>
+
